@@ -1,0 +1,18 @@
+.header {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding-top: 1rem;
+}
+
+.category-section {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 50%;
+}
+
+.category-section section {
+	color: orange;
+	font-weight: bold;
+}

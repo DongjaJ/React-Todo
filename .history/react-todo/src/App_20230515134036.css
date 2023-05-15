@@ -3,16 +3,10 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding-top: 20%;
 }
 
 .App {
 	outline: 2px solid black;
-	width: 50vw;
-	height: 60vh;
-	border-radius: 16px;
-}
-
-li {
-	list-style: none;
+	width: 50%;
+	height: 60%;
 }
