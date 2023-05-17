@@ -1,26 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/Todos.module.css';
 import { BsFillTrashFill } from 'react-icons/bs';
+import TodoItem from './TodoItem';
 
 export default function Todos() {
+	const [todos, setTodos] = useState([
+		{ content: '밥먹기', checked: false },
+		{ content: '리액트 공부', checked: true },
+	]);
+
+	const [content, setContent] = useState();
+
+	const handleClick = (e) => {
+		e.preventDefault();
+		if (!content) return;
+		setTodos((prev) => [...prev, { content, checked: false }]);
+		console.log(content);
+	};
+	const handleChange = ({ target }) => {
+		const { value } = target;
+		console.log(value);
+		setContent(value);
+	};
+
+	function deleteContent(content) {
+		setTodos((todos) => todos.filter((todo) => todo.content !== content));
+	}
+
+	function setCheck(content) {
+		setTodos((todos) =>
+			todos.map((todo) =>
+				todo.content === content
+					? { ...todo, checked: !todo.checked }
+					: todo
+			)
+		);
+	}
+
 	return (
 		<div className={styles.todos}>
-			<ul>
-				<li>
-					<input type="checkbox" />
-					밥먹기
-					<button>
-						<BsFillTrashFill />
-					</button>
-				</li>
-				<li>
-					<input type="checkbox" />
-					리액트 공부
-					<button>
-						<BsFillTrashFill />
-					</button>
-				</li>
+			<ul className={styles['todos-items']}>
+				{todos.map((todo) => {
+					return (
+						<TodoItem
+							content={todo.content}
+							checked={todo.checked}
+							setCheck={setCheck}
+							deleteContent={deleteContent}></TodoItem>
+					);
+				})}
 			</ul>
+			<div className={styles.footer}>
+				<input
+					name="content"
+					placeholder="Add Todo"
+					value={content}
+					onChange={handleChange}
+					className={styles.input}></input>
+				<button className={styles['add-button']} onClick={handleClick}>
+					Add
+				</button>
+			</div>
 		</div>
 	);
 }
