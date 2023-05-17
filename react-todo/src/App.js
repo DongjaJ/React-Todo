@@ -1,15 +1,18 @@
 import './App.css';
 import Header from './components/Header';
 import Todos from './components/Todos';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { DarkModeContext, DarkModeProvider } from './context/DarkModeContext';
 
 function App() {
 	const [category, setCategory] = useState('All');
 	return (
-		<div className="App">
-			<Header setCategory={setCategory}></Header>
-			<Todos category={category}></Todos>
-		</div>
+		<DarkModeProvider>
+			<div className="App">
+				<Header setCategory={setCategory}></Header>
+				<Todos category={category}></Todos>
+			</div>
+		</DarkModeProvider>
 	);
 }
 

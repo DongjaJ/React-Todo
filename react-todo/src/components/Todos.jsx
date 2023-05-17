@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from '../styles/Todos.module.css';
 import { BsFillTrashFill } from 'react-icons/bs';
 import TodoItem from './TodoItem';
+import { DarkModeContext } from '../context/DarkModeContext';
 
 export default function Todos({ category }) {
-	console.log(category);
 	const [todos, setTodos] = useState([
 		{ content: '밥먹기', checked: false },
 		{ content: '리액트 공부', checked: true },
 	]);
-
+	const { darkMode } = useContext(DarkModeContext);
 	const [content, setContent] = useState();
 
 	const handleClick = (e) => {
@@ -38,7 +38,10 @@ export default function Todos({ category }) {
 
 	return (
 		<div className={styles.todos}>
-			<ul className={styles['todos-items']}>
+			<ul
+				className={`${styles['todos-items']} ${
+					darkMode ? styles.darkBody : ''
+				}`}>
 				{todos.map((todo) => {
 					return (category === 'Active' && todo.checked) ||
 						(category === 'Completed' && !todo.checked) ? (
@@ -52,7 +55,10 @@ export default function Todos({ category }) {
 					);
 				})}
 			</ul>
-			<div className={styles.footer}>
+			<div
+				className={`${styles.footer} ${
+					darkMode ? styles.darkFooter : ''
+				}`}>
 				<input
 					name="content"
 					placeholder="Add Todo"

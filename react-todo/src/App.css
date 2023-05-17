@@ -1,6 +1,9 @@
 body {
+	background-color: gray;
+}
+
+#root {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding-top: 20%;
@@ -15,4 +18,10 @@ body {
 
 li {
 	list-style: none;
+}
+
+input {
+	border: none;
+	border: 0;
+	outline: none;
 }

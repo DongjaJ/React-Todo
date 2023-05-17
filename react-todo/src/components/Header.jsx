@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import styles from '../styles/Header.module.css';
+import { DarkModeContext } from '../context/DarkModeContext';
 
 export default function Header({ setCategory }) {
+	const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+
 	function handleClick({ target }) {
 		setCategory(target.textContent);
 	}
 
 	return (
-		<div className={styles.header}>
-			<button>
-				<BsFillMoonFill />
+		<div className={`${styles.header} ${darkMode ? styles.dark : ''}`}>
+			<button onClick={toggleDarkMode}>
+				{darkMode ? <BsFillSunFill /> : <BsFillMoonFill />}
 			</button>
 			<div className={styles['category-section']}>
 				<section onClick={handleClick}>All</section>
