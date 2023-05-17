@@ -3,7 +3,8 @@ import styles from '../styles/Todos.module.css';
 import { BsFillTrashFill } from 'react-icons/bs';
 import TodoItem from './TodoItem';
 
-export default function Todos() {
+export default function Todos({ category }) {
+	console.log(category);
 	const [todos, setTodos] = useState([
 		{ content: '밥먹기', checked: false },
 		{ content: '리액트 공부', checked: true },
@@ -15,11 +16,9 @@ export default function Todos() {
 		e.preventDefault();
 		if (!content) return;
 		setTodos((prev) => [...prev, { content, checked: false }]);
-		console.log(content);
 	};
 	const handleChange = ({ target }) => {
 		const { value } = target;
-		console.log(value);
 		setContent(value);
 	};
 
@@ -41,7 +40,10 @@ export default function Todos() {
 		<div className={styles.todos}>
 			<ul className={styles['todos-items']}>
 				{todos.map((todo) => {
-					return (
+					return (category === 'Active' && todo.checked) ||
+						(category === 'Completed' && !todo.checked) ? (
+						''
+					) : (
 						<TodoItem
 							content={todo.content}
 							checked={todo.checked}
