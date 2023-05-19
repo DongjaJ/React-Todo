@@ -1,15 +1,23 @@
 .header {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
-	/* height: 20%; */
 	background-color: whitesmoke;
 	border-bottom: 1px solid grey;
-	padding: 0.3rem 0;
+	padding: 0.3rem 2rem;
 }
 
 .dark {
 	background-color: #000066;
+}
+
+.icon {
+	background-color: transparent;
+}
+
+.button {
+	background-color: transparent;
+	color: orange;
 }
 
 .category-section {

@@ -12,9 +12,11 @@ export default function Header({ setCategory }) {
 
 	return (
 		<div className={`${styles.header} ${darkMode ? styles.dark : ''}`}>
-			<button onClick={toggleDarkMode}>
-				{darkMode ? <BsFillSunFill /> : <BsFillMoonFill />}
-			</button>
+			<span className={styles.icon}>
+				<button className={styles.button} onClick={toggleDarkMode}>
+					{darkMode ? <BsFillSunFill /> : <BsFillMoonFill />}
+				</button>
+			</span>
 			<div className={styles['category-section']}>
 				<section onClick={handleClick}>All</section>
 				<section onClick={handleClick}>Active</section>
