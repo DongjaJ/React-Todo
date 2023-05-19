@@ -8,6 +8,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 1.4rem;
+	accent-color: orange;
 	width: 100vw;
 	height: 100vh;
 	background-color: grey;
@@ -24,8 +26,12 @@ li {
 
 input {
 	border: none;
-	border: 0;
 	outline: none;
+}
+
+button {
+	outline: 0;
+	border: 0;
 }
 
 #root {

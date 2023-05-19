@@ -2,10 +2,10 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	height: 20%;
+	/* height: 20%; */
 	background-color: whitesmoke;
 	border-bottom: 1px solid grey;
-	/* border-radius: 16px 16px 0 0; */
+	padding: 0.3rem 0;
 }
 
 .dark {
@@ -16,11 +16,17 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	width: 50%;
 	cursor: pointer;
 }
 
 .category-section section {
 	color: orange;
+	font-size: 1.3rem;
+	margin: 0.4rem;
 	font-weight: bold;
+	opacity: 0.8;
+}
+
+.category-section section:hover {
+	opacity: 1;
 }

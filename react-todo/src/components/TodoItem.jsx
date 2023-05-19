@@ -7,17 +7,24 @@ export default function TodoItem({ deleteContent, setCheck, todo }) {
 
 	return (
 		<li className={styles.todoItem}>
-			<div>
-				<input
-					type="checkbox"
-					checked={checked}
-					onChange={() => setCheck(todo)}
-				/>
+			<input
+				className={styles.checkbox}
+				type="checkbox"
+				id={todo.id}
+				checked={checked}
+				onChange={() => setCheck(todo)}
+			/>
+			<label htmlFor={todo.id} className={styles.text}>
 				{content}
-			</div>
-			<button onClick={() => deleteContent(todo)}>
-				<BsFillTrashFill />
-			</button>
+			</label>
+
+			<span className={styles.icon}>
+				<button
+					className={styles.button}
+					onClick={() => deleteContent(todo)}>
+					<BsFillTrashFill />
+				</button>
+			</span>
 		</li>
 	);
 }

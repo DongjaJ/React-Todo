@@ -2,4 +2,33 @@
 	margin: 1rem;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 1rem;
+	margin: 0.1rem 0;
+}
+
+.checkbox {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.text {
+	flex: 1 1 0%;
+	margin-left: 0.1rem;
+	font-size: 1.5rem;
+}
+
+.icon {
+	background-color: lightgrey;
+	border-radius: 100%;
+	transition: all 0.25 ease-in-out;
+}
+
+.icon:hover {
+	background-color: orange;
+	transform: rotate(15deg) scale(1.1);
+}
+
+.button {
+	background-color: transparent;
 }
