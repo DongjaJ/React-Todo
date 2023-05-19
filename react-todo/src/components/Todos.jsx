@@ -3,6 +3,7 @@ import styles from '../styles/Todos.module.css';
 import TodoItem from './TodoItem';
 import { DarkModeContext } from '../context/DarkModeContext';
 import { saveToLocalStorage, loadFromLocalStorage } from '../localStorage';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Todos({ category }) {
 	const [todos, setTodos] = useState([]);
@@ -16,21 +17,23 @@ export default function Todos({ category }) {
 
 	useEffect(() => {
 		saveToLocalStorage('todos', todos);
-		console.log('update todos', todos);
 	}, [todos]);
 
 	const handleClick = (e) => {
 		e.preventDefault();
 		if (!content) return;
-		setTodos((prev) => [...prev, { content, checked: false }]);
+		setTodos((prev) => [
+			...prev,
+			{ id: uuidv4(), content, checked: false },
+		]);
 	};
 	const handleChange = ({ target }) => {
 		const { value } = target;
 		setContent(value);
 	};
 
-	function deleteContent(content) {
-		setTodos((todos) => todos.filter((todo) => todo.content !== content));
+	function deleteContent(deleted) {
+		setTodos((todos) => todos.filter((todo) => todo.id !== deleted.id));
 	}
 
 	function setCheck(content) {
@@ -59,6 +62,8 @@ export default function Todos({ category }) {
 								content={todo.content}
 								checked={todo.checked}
 								setCheck={setCheck}
+								key={todo.id}
+								todo={todo}
 								deleteContent={deleteContent}></TodoItem>
 						);
 					})}
@@ -81,7 +86,8 @@ export default function Todos({ category }) {
 	);
 }
 
-const initialTodo = [
-	{ content: '밥먹기', checked: false },
-	{ content: '리액트 공부', checked: true },
-];
+//for dummy
+// const initialTodo = [
+// 	{ content: '밥먹기', checked: false },
+// 	{ content: '리액트 공부', checked: true },
+// ];

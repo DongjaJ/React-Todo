@@ -7,6 +7,7 @@ export default function TodoItem({
 	checked,
 	deleteContent,
 	setCheck,
+	todo,
 }) {
 	return (
 		<li className={styles.todoItem}>
@@ -18,7 +19,7 @@ export default function TodoItem({
 				/>
 				{content}
 			</div>
-			<button onClick={() => deleteContent(content)}>
+			<button onClick={() => deleteContent(todo)}>
 				<BsFillTrashFill />
 			</button>
 		</li>

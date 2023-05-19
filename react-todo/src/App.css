@@ -6,12 +6,15 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-top: 20%;
+	padding-top: 20vh;
 }
 
 .App {
 	outline: 2px solid black;
 	width: 50vw;
+	min-width: 400px;
+	max-width: 500px;
+	min-height: 500px;
 	height: 60vh;
 	border-radius: 16px;
 }

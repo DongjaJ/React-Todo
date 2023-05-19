@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Todos from './components/Todos';
 import React, { useState, useEffect, useContext } from 'react';
-import { DarkModeContext, DarkModeProvider } from './context/DarkModeContext';
+import { DarkModeContext } from './context/DarkModeContext';
 import { saveToLocalStorage, loadFromLocalStorage } from './localStorage';
 
 function App() {
@@ -12,9 +12,7 @@ function App() {
 	console.log(darkMode);
 	useEffect(() => {
 		const darkMode = loadFromLocalStorage('darkMode');
-		if (darkMode) {
-			updateDarkMode(darkMode);
-		}
+		if (darkMode) updateDarkMode(darkMode);
 	}, []);
 
 	useEffect(() => {
