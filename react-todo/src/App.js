@@ -1,4 +1,3 @@
-import './App.css';
 import Header from './components/Header';
 import Todos from './components/Todos';
 import React, { useState, useEffect, useContext } from 'react';
@@ -19,10 +18,10 @@ function App() {
 	}, [darkMode]);
 
 	return (
-		<div className="App">
+		<>
 			<Header setCategory={setCategory}></Header>
 			<Todos category={category}></Todos>
-		</div>
+		</>
 	);
 }
 
