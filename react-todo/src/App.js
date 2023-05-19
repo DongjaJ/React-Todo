@@ -9,7 +9,6 @@ function App() {
 	const [category, setCategory] = useState('All');
 	const { darkMode, updateDarkMode } = useContext(DarkModeContext);
 
-	console.log(darkMode);
 	useEffect(() => {
 		const darkMode = loadFromLocalStorage('darkMode');
 		if (darkMode) updateDarkMode(darkMode);

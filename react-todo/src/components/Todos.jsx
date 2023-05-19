@@ -26,6 +26,7 @@ export default function Todos({ category }) {
 			...prev,
 			{ id: uuidv4(), content, checked: false },
 		]);
+		setContent('');
 	};
 	const handleChange = ({ target }) => {
 		const { value } = target;
@@ -36,10 +37,10 @@ export default function Todos({ category }) {
 		setTodos((todos) => todos.filter((todo) => todo.id !== deleted.id));
 	}
 
-	function setCheck(content) {
+	function setCheck(updated) {
 		setTodos((todos) =>
 			todos.map((todo) =>
-				todo.content === content
+				todo.id === updated.id
 					? { ...todo, checked: !todo.checked }
 					: todo
 			)
@@ -59,8 +60,6 @@ export default function Todos({ category }) {
 							''
 						) : (
 							<TodoItem
-								content={todo.content}
-								checked={todo.checked}
 								setCheck={setCheck}
 								key={todo.id}
 								todo={todo}
