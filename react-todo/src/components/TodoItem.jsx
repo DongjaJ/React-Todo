@@ -2,8 +2,13 @@ import React from 'react';
 import { BsFillTrashFill } from 'react-icons/bs';
 import styles from '../styles/TodoItem.module.css';
 
-export default function TodoItem({ deleteContent, setCheck, todo }) {
+export default function TodoItem({ handleDelete, handleUpdate, todo }) {
   const { content, checked } = todo;
+
+  function toggleCheck(item) {
+    const updated = { ...item, checked: !item.checked };
+    handleUpdate(updated);
+  }
 
   return (
     <li className={styles.todoItem}>
@@ -12,14 +17,14 @@ export default function TodoItem({ deleteContent, setCheck, todo }) {
         type="checkbox"
         id={todo.id}
         checked={checked}
-        onChange={() => setCheck(todo)}
+        onChange={() => toggleCheck(todo)}
       />
       <label htmlFor={todo.id} className={styles.text}>
         {content}
       </label>
 
       <span className={styles.icon}>
-        <button className={styles.button} onClick={() => deleteContent(todo)}>
+        <button className={styles.button} onClick={() => handleDelete(todo)}>
           <BsFillTrashFill />
         </button>
       </span>
