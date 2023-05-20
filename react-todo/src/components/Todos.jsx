@@ -16,8 +16,13 @@ export default function Todos({ category }) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (!content) return;
-    setTodos((prev) => [...prev, { id: uuidv4(), content, checked: false }]);
+    const newContent = content.trim();
+    console.log(newContent);
+    if (!newContent) return;
+    setTodos((prev) => [
+      ...prev,
+      { id: uuidv4(), content: newContent, checked: false },
+    ]);
     setContent('');
   };
   const handleChange = ({ target }) => {
