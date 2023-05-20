@@ -12,7 +12,6 @@ function App() {
 		const darkMode = loadFromLocalStorage('darkMode');
 		if (darkMode) updateDarkMode(darkMode);
 	}, []);
-
 	useEffect(() => {
 		saveToLocalStorage('darkMode', darkMode);
 	}, [darkMode]);
