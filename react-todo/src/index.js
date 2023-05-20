@@ -7,9 +7,9 @@ import { DarkModeProvider } from './context/DarkModeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<DarkModeProvider>
-		<App />
-	</DarkModeProvider>
+  <DarkModeProvider>
+    <App />
+  </DarkModeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
