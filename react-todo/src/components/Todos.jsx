@@ -6,14 +6,9 @@ import { saveToLocalStorage, loadFromLocalStorage } from '../localStorage';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function Todos({ category }) {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => loadFromLocalStorage('todos'));
   const { darkMode } = useContext(DarkModeContext);
   const [content, setContent] = useState('');
-
-  useEffect(() => {
-    const todos = loadFromLocalStorage('todos');
-    if (todos) setTodos(todos);
-  }, []);
 
   useEffect(() => {
     saveToLocalStorage('todos', todos);
